@@ -20,7 +20,25 @@ app.get('/list',(req,res)=>{
     })
    res.send(res_)
 })
-
+app.get('/exportDemand/getExportProperty',(req,res)=>{
+    res.setHeader('Content-Type','application/json')
+    res.setHeader('Access-Control-Allow-Origin','*')
+    const res_ = Mock.mock({
+        'list|1-4':[{
+            'label':'@cword(5)',
+            isPenultimate:true,
+            parent:true,
+            'id|+1':1,
+            'children|8-14':[{
+                'label':'@cword(2,5)',
+                'id|+1':100,
+                parent: false,
+                isPenultimate: true,
+            }]
+        }]
+    })
+    res.send(res_)
+})
 app.listen(port,()=>{
     console.log(`Example app listening on port ${port}`)
 })
